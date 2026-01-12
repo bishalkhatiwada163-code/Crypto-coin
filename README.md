@@ -62,6 +62,17 @@ Use ethers.js, web3.js, or MetaMask to send transactions
 ### 4. Build DeFi Apps
 Your blockchain supports all Ethereum smart contracts (Solidity)
 
+### 5. View Token Info (Simple Page)
+Open `token-viewer.html` and:
+- Choose `Local` or `Sepolia` network
+- Enter an account address (for balance)
+- Click `Load` to see token name, symbol, and balance
+
+Quick verify via Node:
+```powershell
+node .\test-token-viewer.js sepolia
+```
+
 ## Network Details
 
 - **Consensus:** QBFT (Istanbul Byzantine Fault Tolerance)

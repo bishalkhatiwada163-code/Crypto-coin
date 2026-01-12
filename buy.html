@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy MyToken - Secure & Easy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-brand">MYTOKEN</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index-new.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="buy.html" class="btn btn-primary">Buy Now</a>
+                <a href="whitepaper.html" class="btn btn-outline">Whitepaper</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Buy <span class="highlight">MyToken</span></h1>
+                <p class="hero-subtitle">Fast, Secure, and Transparent</p>
+                <p class="hero-description">
+                    Start investing in MyToken today. Choose your preferred payment method 
+                    and join thousands of investors worldwide.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Widget -->
+    <section class="section">
+        <div class="container section-content">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="card">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Purchase MyToken</h2>
+                    
+                    <!-- Wallet Connection -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">Step 1: Connect Wallet</h3>
+                        <button class="btn btn-secondary" onclick="connectWallet()" style="width: 100%;">
+                            🔗 Connect MetaMask Wallet
+                        </button>
+                        <p style="color: var(--text-muted); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                            Don't have a wallet? <a href="how-to-buy.html" style="color: var(--primary);">Learn how to set up</a>
+                        </p>
+                    </div>
+
+                    <!-- Quantity Selection -->
+                    <div style="margin-bottom: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">Step 2: Select Amount</h3>
+                        <div class="form-group">
+                            <label class="form-label">Price per MTK Token</label>
+                            <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; color: var(--primary); font-weight: 600;">
+                                $0.45 USD
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Number of Tokens</label>
+                            <input type="number" name="quantity" class="form-input" placeholder="Enter amount" min="1" oninput="calculateTotal()" value="100">
+                        </div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div style="margin-bottom: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">Step 3: Review Order</h3>
+                        <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span style="color: var(--text-muted);">Tokens:</span>
+                                <span style="color: var(--text-light); font-weight: 600;">100 MTK</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span style="color: var(--text-muted);">Price:</span>
+                                <span style="color: var(--text-light); font-weight: 600;">$0.45 each</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                                <span style="color: var(--text-light);">Total:</span>
+                                <span class="total-price" style="color: var(--primary); font-size: 1.5rem; font-weight: 700;">$45.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Notice -->
+                    <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; border-radius: 8px; padding: 1rem; margin-bottom: 2rem;">
+                        <p style="color: #00ff88; margin: 0; font-weight: 600;">
+                            🛡️ Secure Transaction<br>
+                            <span style="font-size: 0.9rem; font-weight: normal;">All transactions are encrypted and processed securely on the blockchain</span>
+                        </p>
+                    </div>
+
+                    <!-- Buy Button -->
+                    <button class="btn btn-primary" onclick="buyNow()" style="width: 100%; padding: 1rem;">
+                        🚀 Buy Now
+                    </button>
+
+                    <!-- Terms -->
+                    <p style="color: var(--text-muted); text-align: center; font-size: 0.85rem; margin-top: 1.5rem;">
+                        By proceeding, you agree to our <a href="#terms" style="color: var(--primary);">Terms of Service</a> 
+                        and <a href="#privacy" style="color: var(--primary);">Privacy Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="section">
+        <div class="container section-content">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Supported Payment Methods</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <div class="highlight-card">
+                    <div class="highlight-icon">💰</div>
+                    <h3>MetaMask</h3>
+                    <p>Connect your wallet for direct token purchase</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🔐</div>
+                    <h3>Trust Wallet</h3>
+                    <p>Secure mobile wallet integration</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">💳</div>
+                    <h3>Credit/Debit Card</h3>
+                    <p>Powered by Stripe for easy fiat conversion</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🏦</div>
+                    <h3>Bank Transfer</h3>
+                    <p>ACH and wire transfer options available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(176, 32, 240, 0.1));">
+        <div class="container section-content text-center">
+            <h2>Need Help?</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Check our guides or contact our support team for assistance.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="how-to-buy.html" class="btn btn-primary">How to Buy Guide</a>
+                <a href="faq.html" class="btn btn-secondary">FAQ</a>
+                <a href="contact.html" class="btn btn-outline">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>MyToken is a next-generation cryptocurrency platform built on blockchain technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Coin</a></li>
+                        <li><a href="tokenomics.html">Tokenomics</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="whitepaper.html">Whitepaper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="community.html">Telegram</a></li>
+                        <li><a href="community.html">Discord</a></li>
+                        <li><a href="community.html">Twitter</a></li>
+                        <li><a href="community.html">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <strong>⚠️ Disclaimer:</strong> This website is for informational purposes only. 
+                    Cryptocurrency investments carry risk. Do your own research before investing.
+                </div>
+                <p>&copy; 2025 MyToken. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

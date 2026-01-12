@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MyToken • Home</title>
+    <meta name="description" content="Landing page for MyToken with links to the token viewer and project details." />
+    <style>
+      :root { --bg:#0b1220; --text:#e6edf3; --muted:#a9b6c5; --accent:#7c9cff; --accent-2:#43d1a1; --border:#22314a; }
+      *{box-sizing:border-box} html,body{height:100%} html{scroll-behavior:smooth}
+      body{margin:0; padding:24px; font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif; color:var(--text);
+        background: radial-gradient(1400px 600px at 10% -15%, #17243e 0%, var(--bg) 55%), radial-gradient(800px 400px at 90% -10%, #0f1a30 0%, transparent 70%);
+        display:grid; place-items:start center; gap:24px; }
+      .nav{position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; max-width:1080px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; backdrop-filter:blur(6px); background:rgba(12,20,36,0.65)}
+      .nav__brand{font-weight:800; letter-spacing:.2px} .nav__links{list-style:none; display:flex; gap:16px; margin:0; padding:0}
+      .nav__links a{color:var(--text); text-decoration:none; padding:8px 10px; border-radius:8px} .nav__links a:hover{background:rgba(34,49,74,0.6)}
+      .nav__toggle{display:none; background:transparent; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:6px 10px}
+      @media (max-width:640px){ .nav__toggle{display:inline-block} .nav__links{display:none; position:absolute; right:12px; top:54px; flex-direction:column; background:rgba(12,20,36,0.95); border:1px solid var(--border); border-radius:12px; padding:8px} body.menu-open .nav__links{display:flex} }
+      header{max-width:1080px; width:100%; text-align:center; padding:24px 12px}
+      .title{font-size:clamp(26px,5vw,42px); font-weight:800; letter-spacing:.2px}
+      .subtitle{color:var(--muted); margin-top:10px; font-size:clamp(14px,2.4vw,18px)}
+      .cta{display:inline-flex; gap:12px; margin-top:16px} .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 16px; border-radius:10px; text-decoration:none; font-weight:700}
+      .btn.primary{background:var(--accent); color:#0b1220} .btn.secondary{background:var(--accent-2); color:#0b1220}
+      .grid{display:grid; grid-template-columns:1fr; gap:16px; width:100%; max-width:1080px}
+      .card{background:linear-gradient(180deg, rgba(18,26,42,0.9), rgba(18,26,42,0.7)); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:0 6px 16px rgba(0,0,0,0.25)}
+      .muted{color:var(--muted)} .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+      footer{max-width:1080px; width:100%; display:grid; gap:8px; color:var(--muted); border-top:1px solid var(--border); padding-top:16px}
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav__brand">MyToken</div>
+      <button class="nav__toggle" aria-label="Toggle navigation" onclick="document.body.classList.toggle('menu-open')">☰</button>
+      <ul class="nav__links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/token-viewer.html">Viewer</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+    <header>
+      <div class="title">Welcome to MyToken</div>
+      <div class="subtitle">A clean, responsive viewer for your ERC‑20 token on Local Besu or Sepolia.</div>
+      <div class="cta">
+        <a class="btn primary" href="/token-viewer.html?network=sepolia">Open Viewer</a>
+        <a class="btn secondary" href="/about.html">Learn More</a>
+      </div>
+    </header>
+    <section class="grid">
+      <div class="card">
+        <h3>What is MyToken?</h3>
+        <p class="muted">MyToken is a simple ERC‑20‑style token deployed on a local Besu network and Sepolia testnet. Use the Viewer to inspect name, symbol, decimals, total supply, and balances.</p>
+      </div>
+      <div class="card">
+        <h3>Quick Links</h3>
+        <p class="muted">Jump to the Viewer to check balances, or read how the network and token were created on the About page.</p>
+        <p><a href="/token-viewer.html" class="btn primary">Go to Viewer</a></p>
+      </div>
+    </section>
+    <footer>
+      <div>© 2026 MyToken</div>
+      <div>Docs: <a href="./MyToken.sol" class="muted" target="_blank">MyToken.sol</a> · <a href="./deployment.json" class="muted" target="_blank">deployment.json</a> · <a href="./deployed-contract.json" class="muted" target="_blank">deployed-contract.json</a></div>
+    </footer>
+  </body>
+  </html>

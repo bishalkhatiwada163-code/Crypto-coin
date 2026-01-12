@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MyToken</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-brand">MYTOKEN</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index-new.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="buy.html" class="btn btn-primary">Buy Now</a>
+                <a href="whitepaper.html" class="btn btn-outline">Whitepaper</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Get in <span class="highlight">Touch</span></h1>
+                <p class="hero-subtitle">We're Here to Help</p>
+                <p class="hero-description">
+                    Have questions or feedback? Contact our team anytime. 
+                    We respond to all inquiries within 24 hours.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="section">
+        <div class="container section-content">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto;">
+                <!-- Form -->
+                <div>
+                    <h2 style="margin-bottom: 2rem;">Send us a Message</h2>
+                    <form class="contact-form" style="margin: 0; padding: 0; background: none; border: none;">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" name="name" class="form-input" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject *</label>
+                            <input type="text" name="subject" class="form-input" placeholder="How can we help?" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message *</label>
+                            <textarea name="message" class="form-textarea" placeholder="Your message here..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 style="margin-bottom: 2rem;">Contact Information</h2>
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <div class="card">
+                            <h3 style="color: var(--primary); margin-top: 0;">Email</h3>
+                            <p style="color: var(--text-muted); margin: 0;">
+                                General inquiries: <a href="mailto:hello@mytoken.io" style="color: var(--primary);">hello@mytoken.io</a><br>
+                                Support: <a href="mailto:support@mytoken.io" style="color: var(--primary);">support@mytoken.io</a><br>
+                                Partnerships: <a href="mailto:partnerships@mytoken.io" style="color: var(--primary);">partnerships@mytoken.io</a>
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h3 style="color: var(--primary); margin-top: 0;">Response Time</h3>
+                            <p style="color: var(--text-muted); margin: 0;">
+                                ⏱️ We typically respond within 24 hours<br>
+                                📞 Priority support available during business hours<br>
+                                🌍 Timezone: UTC
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <h3 style="color: var(--primary); margin-top: 0;">Community</h3>
+                            <p style="color: var(--text-muted); margin: 0;">
+                                📱 <a href="#telegram" style="color: var(--primary);">Telegram</a><br>
+                                💬 <a href="#discord" style="color: var(--primary);">Discord</a><br>
+                                𝕏 <a href="#twitter" style="color: var(--primary);">Twitter</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="section">
+        <div class="container section-content">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Quick Resources</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <div class="highlight-card">
+                    <div class="highlight-icon">❓</div>
+                    <h3>FAQ</h3>
+                    <p>Check our frequently asked questions for quick answers</p>
+                    <a href="faq.html" style="color: var(--primary); text-decoration: underline; margin-top: 1rem; display: inline-block;">View FAQ →</a>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">📖</div>
+                    <h3>Whitepaper</h3>
+                    <p>Read our comprehensive whitepaper for technical details</p>
+                    <a href="whitepaper.html" style="color: var(--primary); text-decoration: underline; margin-top: 1rem; display: inline-block;">Download →</a>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">📚</div>
+                    <h3>How to Buy</h3>
+                    <p>Step-by-step guide to purchasing MTK tokens</p>
+                    <a href="how-to-buy.html" style="color: var(--primary); text-decoration: underline; margin-top: 1rem; display: inline-block;">View Guide →</a>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🔐</div>
+                    <h3>Security Report</h3>
+                    <p>View our latest security audit results</p>
+                    <a href="#security" style="color: var(--primary); text-decoration: underline; margin-top: 1rem; display: inline-block;">Read Report →</a>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">📋</div>
+                    <h3>Terms & Privacy</h3>
+                    <p>Review our legal documents and privacy policy</p>
+                    <a href="#terms" style="color: var(--primary); text-decoration: underline; margin-top: 1rem; display: inline-block;">View Documents →</a>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🐛</div>
+                    <h3>Report Security Issue</h3>
+                    <p>Responsible disclosure for security vulnerabilities</p>
+                    <a href="mailto:security@mytoken.io" style="color: var(--primary); text-decoration: underline; margin-top: 1rem; display: inline-block;">security@mytoken.io →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>MyToken is a next-generation cryptocurrency platform built on blockchain technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Coin</a></li>
+                        <li><a href="tokenomics.html">Tokenomics</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="whitepaper.html">Whitepaper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="community.html">Telegram</a></li>
+                        <li><a href="community.html">Discord</a></li>
+                        <li><a href="community.html">Twitter</a></li>
+                        <li><a href="community.html">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <strong>⚠️ Disclaimer:</strong> This website is for informational purposes only. 
+                    Cryptocurrency investments carry risk. Do your own research before investing.
+                </div>
+                <p>&copy; 2025 MyToken. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

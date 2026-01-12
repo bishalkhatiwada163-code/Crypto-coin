@@ -5,7 +5,8 @@
   "scripts": {
     "start:all": "powershell -File start-all.ps1",
     "check": "node check-rpc.js",
-    "deploy": "node deploy-erc20.js"
+    "deploy": "node deploy-erc20.js",
+    "start:viewer": "node serve-token.js"
   },
   "dependencies": {
     "dotenv": "^17.2.3",

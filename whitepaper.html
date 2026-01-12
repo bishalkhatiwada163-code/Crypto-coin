@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitepaper - MyToken</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-brand">MYTOKEN</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index-new.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="buy.html" class="btn btn-primary">Buy Now</a>
+                <a href="whitepaper.html" class="btn btn-outline">Whitepaper</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>MyToken <span class="highlight">Whitepaper</span></h1>
+                <p class="hero-subtitle">Technical Documentation & Vision</p>
+                <p class="hero-description">
+                    Our comprehensive whitepaper outlines the technology, economics, 
+                    and vision behind MyToken.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" onclick="downloadWhitepaper()" class="btn btn-primary">📥 Download PDF</a>
+                    <a href="#content" class="btn btn-secondary">Read Online</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="section">
+        <div class="container section-content">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Table of Contents</h2>
+            <div style="max-width: 700px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 2rem;">
+                <ol style="color: var(--text-muted); line-height: 2.2; padding-left: 2rem;">
+                    <li><a href="#abstract" style="color: var(--primary);">Abstract</a></li>
+                    <li><a href="#introduction" style="color: var(--primary);">Introduction</a></li>
+                    <li><a href="#problem" style="color: var(--primary);">Problem Statement</a></li>
+                    <li><a href="#solution" style="color: var(--primary);">Solution Overview</a></li>
+                    <li><a href="#technology" style="color: var(--primary);">Technology & Architecture</a></li>
+                    <li><a href="#tokenomics" style="color: var(--primary);">Tokenomics</a></li>
+                    <li><a href="#economics" style="color: var(--primary);">Economic Model</a></li>
+                    <li><a href="#governance" style="color: var(--primary);">Governance</a></li>
+                    <li><a href="#security" style="color: var(--primary);">Security & Audits</a></li>
+                    <li><a href="#roadmap" style="color: var(--primary);">Development Roadmap</a></li>
+                    <li><a href="#conclusion" style="color: var(--primary);">Conclusion</a></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section" id="content">
+        <div class="container section-content">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Abstract -->
+                <div class="card" id="abstract">
+                    <h2 style="color: var(--primary);">Abstract</h2>
+                    <p>
+                        MyToken is a next-generation cryptocurrency protocol designed to provide fast, secure, 
+                        and decentralized financial services. Built on Ethereum, MTK tokens enable users to participate 
+                        in a global financial ecosystem without intermediaries. This whitepaper details the technical 
+                        architecture, economic model, and governance framework that enable MyToken to deliver 
+                        superior value to stakeholders.
+                    </p>
+                </div>
+
+                <!-- Introduction -->
+                <div class="card" id="introduction">
+                    <h2 style="color: var(--primary);">Introduction</h2>
+                    <p>
+                        Traditional financial systems have served humanity for centuries, but they have fundamental 
+                        limitations: they are slow, costly, geographically restricted, and controlled by centralized institutions. 
+                        The advent of blockchain technology has opened new possibilities for decentralized finance (DeFi).
+                    </p>
+                    <p>
+                        MyToken leverages blockchain's transformative potential to create a more inclusive, 
+                        transparent, and efficient financial system. Our protocol combines innovative technology 
+                        with thoughtful economics to deliver real-world utility.
+                    </p>
+                </div>
+
+                <!-- Problem Statement -->
+                <div class="card" id="problem">
+                    <h2 style="color: var(--primary);">Problem Statement</h2>
+                    <h3 style="color: var(--primary); margin: 1.5rem 0 1rem;">Current System Limitations:</h3>
+                    <ul style="color: var(--text-muted); line-height: 2;">
+                        <li><strong>Slow Transactions:</strong> International transfers take days to settle</li>
+                        <li><strong>High Fees:</strong> Intermediaries charge excessive fees, reducing value for users</li>
+                        <li><strong>Limited Access:</strong> Billions lack access to basic financial services</li>
+                        <li><strong>Lack of Transparency:</strong> Systems are opaque and difficult to verify</li>
+                        <li><strong>Centralized Control:</strong> Single institutions control user funds and access</li>
+                    </ul>
+                </div>
+
+                <!-- Solution -->
+                <div class="card" id="solution">
+                    <h2 style="color: var(--primary);">Solution Overview</h2>
+                    <p>
+                        MyToken addresses these challenges through:
+                    </p>
+                    <ul style="color: var(--text-muted); line-height: 2;">
+                        <li><strong>Blockchain Technology:</strong> Immutable, transparent ledger of all transactions</li>
+                        <li><strong>Decentralization:</strong> No single point of failure or control</li>
+                        <li><strong>Smart Contracts:</strong> Automated, trustless execution of agreements</li>
+                        <li><strong>Community Governance:</strong> Token holders vote on protocol changes</li>
+                        <li><strong>Interoperability:</strong> Seamless integration with other DeFi protocols</li>
+                    </ul>
+                </div>
+
+                <!-- Technology -->
+                <div class="card" id="technology">
+                    <h2 style="color: var(--primary);">Technology & Architecture</h2>
+                    <h3 style="color: var(--primary); margin: 1.5rem 0 1rem;">Core Components:</h3>
+                    <ul style="color: var(--text-muted); line-height: 2; margin-bottom: 1.5rem;">
+                        <li><strong>ERC-20 Token Contract:</strong> Standard Ethereum token with additional features</li>
+                        <li><strong>Liquidity Pools:</strong> Decentralized exchange functionality</li>
+                        <li><strong>Staking Protocol:</strong> Reward mechanism for token holders</li>
+                        <li><strong>DAO Governance:</strong> Decentralized autonomous organization</li>
+                    </ul>
+                    <h3 style="color: var(--primary); margin: 1.5rem 0 1rem;">Security Measures:</h3>
+                    <ul style="color: var(--text-muted); line-height: 2;">
+                        <li>Multi-signature wallets for fund management</li>
+                        <li>Third-party security audits</li>
+                        <li>Bug bounty programs</li>
+                        <li>Formal verification of smart contracts</li>
+                    </ul>
+                </div>
+
+                <!-- Tokenomics -->
+                <div class="card" id="tokenomics">
+                    <h2 style="color: var(--primary);">Tokenomics</h2>
+                    <ul style="color: var(--text-muted); line-height: 2;">
+                        <li><strong>Total Supply:</strong> 1,000,000 MTK tokens</li>
+                        <li><strong>Decimals:</strong> 18</li>
+                        <li><strong>Distribution:</strong> 20% Team, 30% Liquidity, 25% Marketing, 25% Community</li>
+                        <li><strong>Vesting:</strong> 2-year cliff for team tokens with gradual unlock</li>
+                    </ul>
+                </div>
+
+                <!-- Economics -->
+                <div class="card" id="economics">
+                    <h2 style="color: var(--primary);">Economic Model</h2>
+                    <p>
+                        MyToken employs a sustainable economic model that balances growth with stability. 
+                        Transaction fees are distributed to validators and the protocol treasury, creating sustainable incentives.
+                    </p>
+                </div>
+
+                <!-- Governance -->
+                <div class="card" id="governance">
+                    <h2 style="color: var(--primary);">Governance</h2>
+                    <p>
+                        MyToken is governed by its community through a decentralized autonomous organization (DAO). 
+                        Token holders can propose and vote on protocol changes, ensuring democratic decision-making.
+                    </p>
+                </div>
+
+                <!-- Security -->
+                <div class="card" id="security">
+                    <h2 style="color: var(--primary);">Security & Audits</h2>
+                    <p>
+                        Security is paramount. Our smart contracts have been audited by leading security firms. 
+                        We maintain a bug bounty program and conduct regular security reviews.
+                    </p>
+                    <p style="color: var(--accent-green);">✅ Latest Audit: Passed all security checks</p>
+                </div>
+
+                <!-- Roadmap -->
+                <div class="card" id="roadmap">
+                    <h2 style="color: var(--primary);">Development Roadmap</h2>
+                    <p>
+                        See our <a href="roadmap.html" style="color: var(--primary);">full roadmap</a> for detailed 
+                        information about upcoming features and milestones.
+                    </p>
+                </div>
+
+                <!-- Conclusion -->
+                <div class="card" id="conclusion">
+                    <h2 style="color: var(--primary);">Conclusion</h2>
+                    <p>
+                        MyToken represents the next evolution in decentralized finance. By combining innovative 
+                        technology with thoughtful economics and community governance, we are building a financial system 
+                        that is inclusive, transparent, and sustainable.
+                    </p>
+                    <p>
+                        We invite you to join us on this journey toward financial freedom for everyone.
+                    </p>
+                </div>
+
+                <!-- Download Section -->
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(176, 32, 240, 0.1)); border-radius: 15px;">
+                    <h3 style="color: var(--primary); margin-top: 0;">Full Whitepaper</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Download the complete whitepaper as a PDF for offline reading
+                    </p>
+                    <button onclick="downloadWhitepaper()" class="btn btn-primary">📥 Download PDF</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>MyToken is a next-generation cryptocurrency platform built on blockchain technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Coin</a></li>
+                        <li><a href="tokenomics.html">Tokenomics</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="whitepaper.html">Whitepaper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="community.html">Telegram</a></li>
+                        <li><a href="community.html">Discord</a></li>
+                        <li><a href="community.html">Twitter</a></li>
+                        <li><a href="community.html">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <strong>⚠️ Disclaimer:</strong> This website is for informational purposes only. 
+                    Cryptocurrency investments carry risk. Do your own research before investing.
+                </div>
+                <p>&copy; 2025 MyToken. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
