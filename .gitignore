@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+
+# Logs
+*.log
+
+# Local chain state (regenerate on start)
+nodes/**/database/
+nodes/**/caches/
+nodes/**/LOG*
+nodes/**/LOCK
+nodes/**/CURRENT
+nodes/**/MANIFEST-*
+nodes/**/OPTIONS-*
+nodes/**/IDENTITY
+nodes/**/000*

@@ -1,0 +1,41 @@
+[genesis]
+chainId = 13371
+homesteadBlock = 0
+eip150Block = 0
+eip155Block = 0
+eip158Block = 0
+byzantiumBlock = 0
+constantinopleBlock = 0
+petersburgBlock = 0
+istanbulBlock = 0
+berlinBlock = 0
+londonBlock = 0
+terminalTotalDifficulty = 0
+shanghaiTime = 0
+cancunTime = 0
+gasLimit = "0x1312d00"
+difficulty = "0x1"
+baseFeePerGas = "0x3b9aca00"
+
+[genesis.qbft]
+blockperiodSeconds = 2
+epochLength = 30000
+requestTimeoutSeconds = 4
+blockReward = "0x0"
+minBlockTime = 1
+
+[[nodes]]
+address = "0x51b9d20b4827d8c695fb03a69b2942f1a728dd6c"
+nodePrivateKeyFile = "nodes/node1/key"
+
+[[nodes]]
+address = "0x6bb4c9467eca0206dc431c246d18de18466065e7"
+nodePrivateKeyFile = "nodes/node2/key"
+
+[[nodes]]
+address = "0x8b2bacf13ad51e56b0b7a96733a31213702ac3e0"
+nodePrivateKeyFile = "nodes/node3/key"
+
+[[nodes]]
+address = "0xc73a695df1485a0a23c0d83b68f060ad9325dbb1"
+nodePrivateKeyFile = "nodes/node4/key"

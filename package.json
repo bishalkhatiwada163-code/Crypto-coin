@@ -1,0 +1,16 @@
+{
+  "name": "my-blockchain",
+  "version": "1.0.0",
+  "description": "Custom Ethereum blockchain with token deployment",
+  "scripts": {
+    "start:all": "powershell -File start-all.ps1",
+    "check": "node check-rpc.js",
+    "deploy": "node deploy-erc20.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ethers": "^6.10.0",
+    "rlp": "^3.0.0",
+    "solc": "^0.8.20"
+  }
+}
