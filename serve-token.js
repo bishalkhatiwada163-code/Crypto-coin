@@ -17,9 +17,19 @@ const server = http.createServer((req, res) => {
       return res.end('Not Found');
     }
     const ext = path.extname(filePath).toLowerCase();
-    const type = ext === '.html' ? 'text/html; charset=utf-8'
-      : ext === '.json' ? 'application/json'
-      : 'text/plain';
+    const mimeTypes = {
+      '.html': 'text/html; charset=utf-8',
+      '.css': 'text/css',
+      '.js': 'text/javascript',
+      '.json': 'application/json',
+      '.png': 'image/png',
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.gif': 'image/gif',
+      '.svg': 'image/svg+xml',
+      '.ico': 'image/x-icon'
+    };
+    const type = mimeTypes[ext] || 'text/plain';
     fs.readFile(filePath, (readErr, data) => {
       if (readErr) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });

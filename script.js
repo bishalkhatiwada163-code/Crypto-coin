@@ -226,20 +226,127 @@ function initScrollAnimations() {
   });
 }
 
-// ===== WALLET CONNECTION SIMULATION =====
-function connectWallet() {
-  showNotification('Wallet connection feature coming soon!', 'success');
+// ===== WALLET CONNECTION & PURCHASE FUNCTIONALITY =====
+let web3;
+let userAccount;
+let tokenContract;
+
+// Contract details from deployment.json
+const CONTRACT_ADDRESS = '0x5b98245823904bF6e1492F7C2c6C3cFdf7130F1c';
+const CONTRACT_ABI = [{"inputs":[{"internalType":"uint256","name":"_initialSupply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_spender","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_from","type":"address"},{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
+const NETWORK_CONFIG = {
+  chainId: '0xaa36a7', // Sepolia testnet
+  chainName: 'Sepolia Test Network',
+  rpcUrls: ['https://ethereum-sepolia-rpc.publicnode.com'],
+  nativeCurrency: {
+    name: 'SepoliaETH',
+    symbol: 'ETH',
+    decimals: 18
+  },
+  blockExplorerUrls: ['https://sepolia.etherscan.io']
+};
+
+async function connectWallet() {
+  try {
+    // Check if MetaMask is installed
+    if (typeof window.ethereum === 'undefined') {
+      showNotification('Please install MetaMask to continue!', 'error');
+      window.open('https://metamask.io/download/', '_blank');
+      return;
+    }
+
+    // Request account access
+    const accounts = await window.ethereum.request({ 
+      method: 'eth_requestAccounts' 
+    });
+    
+    userAccount = accounts[0];
+    
+    // Initialize Web3
+    web3 = new Web3(window.ethereum);
+    
+    // Check if user is on correct network
+    const chainId = await web3.eth.getChainId();
+    if (chainId.toString(16) !== NETWORK_CONFIG.chainId.replace('0x', '')) {
+      try {
+        // Try to switch to Sepolia network
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: NETWORK_CONFIG.chainId }],
+        });
+      } catch (switchError) {
+        // If network doesn't exist, add it
+        if (switchError.code === 4902) {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [NETWORK_CONFIG],
+          });
+        } else {
+          throw switchError;
+        }
+      }
+    }
+    
+    // Initialize contract
+    tokenContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+    
+    // Update UI
+    updateWalletUI();
+    showNotification(`Wallet connected: ${userAccount.substring(0, 6)}...${userAccount.substring(38)}`, 'success');
+    
+  } catch (error) {
+    console.error('Error connecting wallet:', error);
+    showNotification('Failed to connect wallet: ' + error.message, 'error');
+  }
 }
 
-// ===== BUY COIN HANDLER =====
-function buyNow() {
-  const quantity = document.querySelector('[name="quantity"]')?.value;
-  if (quantity && quantity > 0) {
-    showNotification(`Processing purchase of ${quantity} coins...`, 'success');
-    // In production, integrate with actual payment gateway
-  } else {
-    showNotification('Please enter a valid quantity', 'error');
+function updateWalletUI() {
+  const connectBtn = document.querySelector('button[onclick="connectWallet()"]');
+  if (connectBtn && userAccount) {
+    connectBtn.innerHTML = `✅ Connected: ${userAccount.substring(0, 6)}...${userAccount.substring(38)}`;
+    connectBtn.style.background = 'rgba(0, 255, 136, 0.2)';
+    connectBtn.style.color = '#00ff88';
   }
+}
+
+async function buyNow() {
+  try {
+    const quantityInput = document.querySelector('[name="quantity"]');
+    const quantity = quantityInput?.value;
+    
+    if (!quantity || quantity <= 0) {
+      showNotification('Please enter a valid quantity', 'error');
+      return;
+    }
+
+    // Save quantity to localStorage
+    localStorage.setItem('orderQuantity', quantity);
+    
+    // Redirect to payment page
+    window.location.href = `payment.html?quantity=${quantity}`;
+
+  } catch (error) {
+    console.error('Error:', error);
+    showNotification('Error: ' + error.message, 'error');
+  }
+}
+
+// Listen for account changes
+if (typeof window.ethereum !== 'undefined') {
+  window.ethereum.on('accountsChanged', function (accounts) {
+    if (accounts.length === 0) {
+      userAccount = null;
+      showNotification('Wallet disconnected', 'error');
+    } else {
+      userAccount = accounts[0];
+      updateWalletUI();
+      showNotification('Account changed', 'success');
+    }
+  });
+
+  window.ethereum.on('chainChanged', function (chainId) {
+    window.location.reload();
+  });
 }
 
 // ===== DYNAMIC PRICE CALCULATION =====

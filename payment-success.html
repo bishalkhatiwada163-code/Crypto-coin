@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Bishal Coin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-brand">BISHAL COIN</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buy.html">Buy More</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Success Section -->
+    <section class="section" style="min-height: 70vh; display: flex; align-items: center;">
+        <div class="container section-content">
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <div class="card">
+                    <!-- Success Icon -->
+                    <div style="font-size: 5rem; margin-bottom: 1rem;">✅</div>
+                    
+                    <h1 style="color: #00ff88; margin-bottom: 1rem;">Payment Successful!</h1>
+                    
+                    <p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 2rem;">
+                        Thank you for your purchase. Your tokens will be sent to your wallet shortly.
+                    </p>
+                    
+                    <!-- Order Details -->
+                    <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; text-align: left;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">Order Details</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-muted);">Order Number:</span>
+                            <span id="order-number" style="color: var(--text-light); font-weight: 600;">-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-muted);">Tokens:</span>
+                            <span id="token-quantity" style="color: var(--text-light); font-weight: 600;">-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-muted);">Amount Paid:</span>
+                            <span id="amount-paid" style="color: var(--text-light); font-weight: 600;">-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-muted);">Wallet Address:</span>
+                            <span id="wallet-addr" style="color: var(--text-light); font-weight: 600; word-break: break-all; max-width: 60%;">-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--text-muted);">Status:</span>
+                            <span style="color: #00ff88; font-weight: 600;">✓ Confirmed</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Info -->
+                    <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; text-align: left;">
+                        <h4 style="color: #00ff88; margin-bottom: 0.75rem; font-size: 1rem;">📧 What's Next?</h4>
+                        <ul style="color: #00ff88; font-size: 0.95rem; line-height: 1.8; margin: 0; padding-left: 1.5rem;">
+                            <li>Confirmation email sent to your inbox</li>
+                            <li>Tokens will be transferred within 24 hours</li>
+                            <li>Check your wallet for the tokens</li>
+                            <li>Contact support if you have questions</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                        <a href="buy.html" class="btn btn-primary">Buy More Tokens</a>
+                    </div>
+                    
+                    <p style="color: var(--text-muted); margin-top: 2rem; font-size: 0.9rem;">
+                        Need help? <a href="contact.html" style="color: var(--primary);">Contact Support</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Load order details from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderNumber = urlParams.get('order');
+        
+        if (orderNumber) {
+            // Get order from localStorage
+            const orders = JSON.parse(localStorage.getItem('tokenOrders') || '[]');
+            const order = orders.find(o => o.orderNumber === orderNumber);
+            
+            if (order) {
+                document.getElementById('order-number').textContent = order.orderNumber;
+                document.getElementById('token-quantity').textContent = order.quantity + ' BHD';
+                document.getElementById('amount-paid').textContent = '$' + order.total;
+                document.getElementById('wallet-addr').textContent = order.walletAddress;
+            } else {
+                document.getElementById('order-number').textContent = orderNumber;
+            }
+        }
+    </script>
+</body>
+</html>

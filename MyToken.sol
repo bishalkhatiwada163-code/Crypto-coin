@@ -2,8 +2,8 @@
 pragma solidity ^0.8.20;
 
 contract MyToken {
-    string public name = "MyToken";
-    string public symbol = "MTK";
+    string public name = "Bishal Coin";
+    string public symbol = "BHD";
     uint8 public decimals = 18;
     uint256 public totalSupply;
     

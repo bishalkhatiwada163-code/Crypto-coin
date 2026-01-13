@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Bishal Coin</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-brand">BISHAL COIN</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="buy.html" class="btn btn-primary">Buy Now</a>
+                <a href="whitepaper.html" class="btn btn-outline">Whitepaper</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Complete Your <span class="highlight">Purchase</span></h1>
+                <p class="hero-subtitle">Secure Card Payment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Form -->
+    <section class="section">
+        <div class="container section-content">
+            <div style="max-width: 700px; margin: 0 auto;">
+                
+                <!-- Order Summary -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Order Summary</h2>
+                    <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span style="color: var(--text-muted);">Tokens:</span>
+                            <span id="order-quantity" style="color: var(--text-light); font-weight: 600;">100 BHD</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span style="color: var(--text-muted);">Price per token:</span>
+                            <span style="color: var(--text-light); font-weight: 600;">$0.45</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                            <span style="color: var(--text-light); font-size: 1.2rem; font-weight: 600;">Total:</span>
+                            <span id="order-total" style="color: var(--primary); font-size: 1.5rem; font-weight: 700;">$45.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Selection -->
+                <div class="card">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Payment Method</h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                        <button class="payment-method-btn active" onclick="selectPaymentMethod('card')" id="card-btn">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💳</div>
+                            <div>Credit/Debit Card</div>
+                        </button>
+                        <button class="payment-method-btn" onclick="selectPaymentMethod('crypto')" id="crypto-btn">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">₿</div>
+                            <div>Cryptocurrency</div>
+                        </button>
+                    </div>
+
+                    <!-- Card Payment Form -->
+                    <div id="card-payment-section">
+                        <form id="payment-form">
+                            <!-- Customer Details -->
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: var(--primary); margin-bottom: 1rem;">Customer Information</h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Full Name *</label>
+                                    <input type="text" id="cardholder-name" class="form-input" placeholder="John Doe" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" id="customer-email" class="form-input" placeholder="john@example.com" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Wallet Address (to receive tokens) *</label>
+                                    <input type="text" id="wallet-address" class="form-input" placeholder="0x..." required>
+                                    <small style="color: var(--text-muted); font-size: 0.85rem;">Enter your Ethereum wallet address where you want to receive tokens</small>
+                                </div>
+                            </div>
+
+                            <!-- Card Details -->
+                            <div style="margin-bottom: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                                <h3 style="color: var(--primary); margin-bottom: 1rem;">Card Details</h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Card Number *</label>
+                                    <input type="text" id="card-number" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">Expiry Date *</label>
+                                        <input type="text" id="card-expiry" class="form-input" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">CVV *</label>
+                                        <input type="text" id="card-cvc" class="form-input" placeholder="123" maxlength="4" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Billing ZIP/Postal Code *</label>
+                                    <input type="text" id="billing-zip" class="form-input" placeholder="12345" required>
+                                </div>
+                            </div>
+
+                            <!-- Security Notice -->
+                            <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; border-radius: 8px; padding: 1rem; margin-bottom: 2rem;">
+                                <p style="color: #00ff88; margin: 0; font-weight: 600; font-size: 0.95rem;">
+                                    🔒 Secure Payment<br>
+                                    <span style="font-weight: normal; font-size: 0.9rem;">
+                                        Your payment information is encrypted and secure. We use industry-standard SSL encryption.
+                                    </span>
+                                </p>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                                🔐 Pay $<span id="pay-amount">45.00</span>
+                            </button>
+
+                            <!-- Terms -->
+                            <p style="color: var(--text-muted); text-align: center; font-size: 0.85rem; margin-top: 1.5rem;">
+                                By proceeding, you agree to our <a href="#terms" style="color: var(--primary);">Terms of Service</a> 
+                                and <a href="#privacy" style="color: var(--primary);">Privacy Policy</a>
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- Crypto Payment Section (hidden by default) -->
+                    <div id="crypto-payment-section" style="display: none;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                                For cryptocurrency payment, please use our crypto checkout page.
+                            </p>
+                            <a href="buy.html" class="btn btn-primary">Go to Crypto Checkout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accepted Cards -->
+                <div style="text-align: center; margin-top: 2rem; color: var(--text-muted);">
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem;">We Accept:</p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border-radius: 4px;">💳 Visa</div>
+                        <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border-radius: 4px;">💳 Mastercard</div>
+                        <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border-radius: 4px;">💳 American Express</div>
+                        <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border-radius: 4px;">💳 Discover</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Bishal Coin</h4>
+                    <p>The future of decentralized finance, built on cutting-edge blockchain technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tokenomics.html">Tokenomics</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="whitepaper.html">Whitepaper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bishal Coin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="payment.js"></script>
+</body>
+</html>
